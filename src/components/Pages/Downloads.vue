@@ -9,22 +9,22 @@
                 <div class="e-card-header">
                     <!-- xLarge Circle Avatar-->
                     <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                        <i class="fab fa-windows"></i>
+                      <i :class="icon"></i>
+
                     </div>
 
                 </div>
                 <div class="e-card-header">
                     <div class="e-card-header-caption center">
-                        <div class="e-card-header-title name v-bind:company=">Windows</div>
+                        <div class="e-card-header-title name">{{this.system}}</div>
                         <div class="e-card-sub-title"></div>
                     </div>
                 </div>
                 <div class="e-card-content">
                     <p class="avatar-content">
-                      Download the Microsoft Windows version of Apomden.<br>
-                      Works well with Windows 7 and up.
+                      {{this.message}}
                       <br><br><br>
-                      <button style= "height:30px ; width:100px; border-radius:20px; background-color:green">Download <font-awesome-icon icon="download" /></button>
+                      <button style= "height:30px ; width:100px; border-radius:20px; background-color:#87CEFA"><a href="#" download>Download </a><font-awesome-icon icon="download" /></button>
                     </p>
 
 
@@ -39,26 +39,12 @@
 </template>
 
 <script>
-    import Button from 'vue-progress-button'
 
+  export default {
 
-    export default{
-        components: {
-            'progress-button': Button
-        },
-
-        data() {
-            return{
-                company: {windows:'Windows',apple:'Mac OS', linux:'Linux'}
-            }
-        },
-
-        props: {
-
-            company: String,
-            message: String
-        }
-    }
+    name: 'Downloads',
+    props: ['system', 'icon', 'message']
+  }
 </script>
 
 
@@ -66,6 +52,12 @@
 
 
 <style>
+
+    a{
+
+        text-decoration: none;
+        color: black;
+    }
     .sample_container.avatar-card {
         max-width: 300px;
         margin: auto;
@@ -112,7 +104,7 @@
         position: absolute;
         top: calc(0% - 1.5em);
         left: calc(50% - 1.5em);
-        box-shadow: 0 16px 28px -8px rgba(0, 0, 0, .36), 0 4px 15px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+
     }
 
     .e-card.e-custom-card :nth-child(3) {
